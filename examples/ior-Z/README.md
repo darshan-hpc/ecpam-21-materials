@@ -22,6 +22,7 @@ really dig into the problem).  You can check a few different things, but the
 smoking gun is in the offsets written and read at the MPI-IO level.  The
 offsets read include some duplicates:
 
+```
 darshan-dxt-parser carns_ior_id510260_4-6-49778-9578554294911421599_1617716983.darshan |grep MPIIO |grep read | awk -e '{print $5}' |sort -n |uniq -c |head
       1 0
       2 1000000
@@ -33,9 +34,10 @@ darshan-dxt-parser carns_ior_id510260_4-6-49778-9578554294911421599_1617716983.d
       1 12000000
       2 14000000
       3 15000000
+```
 
 A python script or jupyter notebook that plotted the offsets over time from
-dxt would probably illustrate this.  You can't see it in the dxt_analyzer.py
+dxt would probably illustrate this.  You can't see it in the `dxt_analyzer.py`
 output, though.
 
 ## Conclusion
@@ -53,5 +55,5 @@ to put more stress on a storage system or defeat caching.  The following is
 the documentation of this option in the ior manual, but it doesn't indicate
 if the randomization is independent or shuffled across all ranks.
 
-"-Z reorderTasksRandom -- changes task ordering to random ordering for
-readback".
+`"-Z reorderTasksRandom -- changes task ordering to random ordering for
+readback"`
