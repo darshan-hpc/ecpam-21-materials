@@ -1,0 +1,44 @@
+IOR-3.3.0: MPI Coordinated Test of Parallel I/O
+Began               : Tue Apr  6 13:49:38 2021
+Command line        : ./ior -w -r -o /projects/CSC250STDM12/carns/ior.dat -c -Z -b 1000000 -t 1000000 -s 1 -a MPIIO
+Machine             : Linux nid03824
+TestID              : 0
+StartTime           : Tue Apr  6 13:49:38 2021
+Path                : /lus/theta-fs0/projects/CSC250STDM12/carns
+FS                  : 9409.6 TiB   Used FS: 87.4%   Inodes: 6076.9 Mi   Used Inodes: 32.7%
+
+Options: 
+api                 : MPIIO
+apiVersion          : (3.1)
+test filename       : /projects/CSC250STDM12/carns/ior.dat
+access              : single-shared-file
+type                : collective
+segments            : 1
+ordering in a file  : sequential
+ordering inter file : random task offset
+task offset         : 1
+reorder random seed : 0
+nodes               : 8
+tasks               : 512
+clients per node    : 64
+repetitions         : 1
+xfersize            : 1000000 bytes
+blocksize           : 1000000 bytes
+aggregate filesize  : 488.28 MiB
+
+Results: 
+
+access    bw(MiB/s)  IOPS       Latency(s)  block(KiB) xfer(KiB)  open(s)    wr/rd(s)   close(s)   total(s)   iter
+------    ---------  ----       ----------  ---------- ---------  --------   --------   --------   --------   ----
+write     206.95     218.65     2.34        976.56     976.56     0.016774   2.34       0.002227   2.36       0   
+read      707.14     784.63     0.652445    976.56     976.56     0.036900   0.652536   0.639647   0.690504   0   
+remove    -          -          -           -          -          -          -          -          0.299310   0   
+Max Write: 206.95 MiB/sec (217.00 MB/sec)
+Max Read:  707.14 MiB/sec (741.49 MB/sec)
+
+Summary of all tests:
+Operation   Max(MiB)   Min(MiB)  Mean(MiB)     StdDev   Max(OPs)   Min(OPs)  Mean(OPs)     StdDev    Mean(s) Stonewall(s) Stonewall(MiB) Test# #Tasks tPN reps fPP reord reordoff reordrand seed segcnt   blksiz    xsize aggs(MiB)   API RefNum
+write         206.95     206.95     206.95       0.00     217.00     217.00     217.00       0.00    2.35942         NA            NA     0    512  64    1   0     0        1         1    0      1  1000000  1000000     488.3 MPIIO      0
+read          707.14     707.14     707.14       0.00     741.49     741.49     741.49       0.00    0.69050         NA            NA     0    512  64    1   0     0        1         1    0      1  1000000  1000000     488.3 MPIIO      0
+Finished            : Tue Apr  6 13:49:42 2021
+Application 22869737 resources: utime ~1854s, stime ~125s, Rss ~47452, inblocks ~48, outblocks ~1000144
